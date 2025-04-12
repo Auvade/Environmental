@@ -1,0 +1,437 @@
+---
+title: "Quarterly Fishery Surveys - Salton Sea"
+author: "Bodhi Hueffmeier"
+date: "2025-03-29"
+output: 
+  html_document: 
+    theme: cerulean
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, include=FALSE}
+klippy::klippy(
+  lang = c("r", "markdown"),
+  all_precode = FALSE,
+  position = c("top", "right"),
+  color = "lightblue",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+# Analysis of the Quarterly Fishery Surveys - Salton Sea From 2003 To 2008
+
+## 📊 Project Overview
+
+This project is a personal exploration of quantitative conservation management using publicly available data from the California Department of Fish and Wildlife (CDFW). The primary goals are to visualize and analyze fish population data from the Salton Sea to understand species trends, habitat use, and catch-per-unit-effort (CPUE). This work is meant for learning, data visualization, and sharing insights — not for official reporting.
+
+⸻
+
+## 🎯 Goals of the Analysis
+	1.	Track population changes over time for each fish species.
+	2.	Identify habitat types where each species is most abundant.
+	3.	Calculate overall and species-specific CPUE.
+	4.	Visualize fish abundance data spatially across different sampling sites.
+
+⸻
+
+## 🌊 Background: The Salton Sea & Monitoring Program
+
+The Salton Sea is California’s largest inland waterbody, vital to fish populations and migratory birds on the Pacific Flyway. However, the ecosystem is under stress due to declining water levels, increasing salinity, and reduced inflows, impacting both wildlife and air quality.
+
+In response, the CDFW initiated a long-term fish monitoring program in 2003, sampling 14 stations quarterly across three habitat types: pelagic (open water), near-shore, and estuarine zones. Sampling is conducted with gill nets deployed for approximately 24 hours per site, with fish identified, counted, and measured for key biological indicators (length, weight, sex, condition, etc.).
+
+## Key Notes:
+	•	Some seasonal data are missing (e.g., Fall and Winter 2007) due to launch site inaccessibility.
+	•	Initial deep-water sites were eliminated after year one due to zero catch results.
+	•	Sampling dates can vary; seasonal boundaries may not align cleanly with calendar months.
+	•	Anomalous data (e.g., Oct 13, 2004) were re-sampled due to extreme weather-driven changes.
+	•	The primary goal of data collection is to monitor presence/absence and trends in fish populations.
+
+⸻
+
+## ⚠️ Data Considerations
+	•	CPUE calculations and fish abundance data may contain outliers or missing entries due to weather or equipment issues.
+	•	Data should be interpreted with the context of biological and environmental variability in mind.
+	•	This dataset complements the Quarterly Water Quality Surveys - Salton Sea [ds429].
+
+⸻
+
+## 📝 Licensing & Attribution
+
+This dataset is licensed under Creative Commons Attribution 4.0 International License. Attribution per CDFW BIOS citation standards satisfies the licensing requirements.
+
+Disclaimer: The State of California provides this data without guarantees of accuracy or completeness. Use at your own discretion.
+
+### Links
+[Salton Sea Unit](https://water.ca.gov/saltonsea/)
+
+[Background Information on the Salton Sea](https://wildlife.ca.gov/Regions/6/Salton-Sea-Program/Background)
+
+[Salton Sea Management Efforts](https://wildlife.ca.gov/Regions/6/Salton-Sea-Program/Management-Efforts)
+
+[This data came from Quarterly Fishery Surveys - Salton Sea [ds428]](https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428)
+
+### Setting up the working directory, loading in the libraries, and csv file
+
+```{r}
+# Load in libraries 
+library("ggplot2") # For graphing
+library("tidyverse") # For data wrangling
+library("readr") # For reading the comma separated values file (csv.)
+library("sf") # For reading the shape file (shp.)
+library("ggspatial") # For graphing spatial data
+library("prettymapr") # For making pretty map graphics and annotations
+library("ggrepel") # For adjusting the annotations in the map
+library("ggbreak") # For creating breaks in the x or y axes
+library("patchwork") # For creating breaks in the x or y axes
+library("gridExtra") # For plotting multiple graphs into one figure
+library("grid") # For making a common x and y axis for the grouped graph
+library("klippy") # For making the code easily copied from the HTML page
+
+# Set working directory
+setwd("~/Desktop/Universal Folder/Data Analysis Projects/Salton Sea [ds429]/Quarterly_Fishery_Surveys_-_Salton_Sea")
+
+dat <- read_csv("Quarterly_Fishery_Surveys_-_Salton_Sea_(ds428).csv")
+
+head(dat)
+```
+
+### Extracting the date from the PULL_DATE column and working with it as a time is going to be the first task to do
+
+```{r}
+# Display the data type of each column within the data.
+sapply(dat, class)
+
+# Adding in the date column from the PULL_DATE column in a year month day hour minute second format.
+dat <- dat %>%
+  mutate(Date = as.Date(ymd_hms(dat$PULL_DATE)))
+```
+
+### Restructuring the data frame such that the abundances of all four species of fish are in one column and the names of the species are a "Species" column
+
+```{r}
+long_dat <- pivot_longer(dat, cols = c(TILAPIA, CORVINA, SARGO, CROAKER), values_to = "Fish_Abundance", names_to = "Species")
+
+head(long_dat)
+```
+
+## Summary statistics on each species of fish
+
+```{r}
+Fish_Stats <- long_dat %>%
+  group_by(Species) %>%
+  summarise(total = sum(Fish_Abundance),
+          mean = round(mean(Fish_Abundance), 3),
+          min = min(Fish_Abundance),
+          max = max(Fish_Abundance),
+          sd = sd(Fish_Abundance))
+
+Fish_Stats
+```
+
+### List of of fish species found
+
+```{r}
+Other_Fish <- dat %>%
+  filter(!grepl("0", OTHER)) %>% # Filter outs the "0" characters.
+  select(OTHER)
+
+Other_Fish
+```
+
+### Visualizing the total abundance of each fish species surveyed
+
+```{r}
+ggplot(Fish_Stats, aes(x = Species, y = total, fill = Species)) +
+  geom_col() +
+  geom_errorbar(aes(ymax = total + sd, # Adding error bars
+                    ymin = total - sd),
+                width = 0.70) +
+  scale_y_break(c(200, 5000), scales = 1) + # Break in the y-axis
+  theme_bw() +
+  ggtitle("Cumulative Abundance of Each Fish Species \n2003 to 2008") +
+  ylab("Abundance of Fish")
+```
+
+There were no sargo fish found during this survey. To better focus on species that were observed the "SARGO" column will be removed for visualization purposes.
+
+```{r}
+long_dat <- long_dat %>%
+  filter(!grepl("SARGO", Species))
+
+long_dat
+```
+
+```{r}
+Fish_Habitat_Stats <- long_dat %>%
+  group_by(Species, HABITAT_TY) %>%
+  summarise(total = sum(Fish_Abundance),
+          mean = round(mean(Fish_Abundance), 3),
+          min = min(Fish_Abundance),
+          max = max(Fish_Abundance),
+          sd = sd(Fish_Abundance))
+
+Fish_Habitat_Stats
+```
+
+### Looking at abundances of each species of fish among each habitat type
+
+```{r}
+ggplot(Fish_Habitat_Stats, aes(x = HABITAT_TY, y = total, fill = Species)) +
+  geom_col() +
+  geom_errorbar(aes(ymax = total + sd, 
+                    ymin = total - sd),
+                width = 0.7) +
+  ggtitle("Abundance of Fish at Different Habitate Types") +
+  ylab("Abundance of Fish") +
+  xlab("Habitat Type") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 7)) +
+  facet_wrap(. ~ Species, scales = "free")
+```
+
+No fish were caught from the pelagic habitat type. Most fish of each species were found closest to the Near-shore habitat type.
+
+## Species-based catch-per-unit-effort (CPUE) in units of fish/hr
+
+```{r}
+Species_based_CPUE <- long_dat %>%
+  group_by(Species) %>%
+  summarise(total_abundance = sum(Fish_Abundance),
+            total_hr = sum(NET_HRS),
+            CPUE = round(total_abundance/total_hr, 4), 
+            sd = sd(Fish_Abundance/NET_HRS))
+
+Species_based_CPUE 
+```
+
+### Plotting the CPUE for each species of fish
+
+```{r}
+CPUE_Bar_Plot <- ggplot(data = Species_based_CPUE, aes(x = Species, y = CPUE, fill = Species)) +
+  geom_col() +
+  geom_errorbar(aes(ymax = CPUE + sd,
+                    ymin = 0,           # The error bars were limited to y = 0 because there are no negative amounts of fish that are caught
+                    width = 0.7)) +
+  theme_bw() +
+  ggtitle("Species based Catch-Per-Unit-Effort") +
+  ylab("CPUE (fish caught per hr)")
+  
+CPUE_Bar_Plot
+```
+
+There is on average 5.5 tilapia over the course of the entire survey, while the corvinas and croakers were found more elusive.
+
+## **Taking a dive into the population dynamics**
+
+## Making a function for plotting a timeline of fish counts over time
+
+```{r}
+Fish_Time_Line <- function(data, x = Date, y = "fish", title = "Fish Over Time"){
+
+ggplot(data = dat, aes(x = Date, {{y}})) +
+  geom_smooth() + # This line shows the overall trend of the data with bounds of certainty
+  geom_line(alpha = 0.25) + # This line represents the raw data
+  theme_bw() +
+  labs(title = title) +
+  xlab("Date") +
+  ylab("Abundance") +
+    theme(
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    plot.title = element_text(size = 15))
+}
+```
+
+## Looking at tilapia, corvina, and croaker population dynamics over time
+
+```{r}
+Tilapia_Over_Time <- Fish_Time_Line(data = dat, x = PULL_Date, y = TILAPIA, title = "Tilapia Counts Over Time")
+
+Tilapia_Over_Time
+```
+
+```{r}
+Corvina_Over_Time <- Fish_Time_Line(data = dat, x = Date, y = CORVINA, title = "Corvina Counts Over Time")
+
+Corvina_Over_Time
+```
+
+```{r}
+Croaker_Over_Time <- Fish_Time_Line(data = dat, x = Date, y = CROAKER, title = "Croaker Counts Over Time")
+
+Croaker_Over_Time
+```
+
+### Plot of all fish species abundance over time
+
+```{r}
+ggplot(long_dat, aes(x = Date, y = Fish_Abundance, color = Species, fill = Species)) +
+  geom_smooth() +
+  theme_bw() +
+  ggtitle("Abundance of Fish Over Time") +
+  ylab("Abundance of Fish") 
+```
+
+The shear number of tilapia drowns out the croaker and corvina. 
+
+### Capturing a snapshot comparison of the population dynamics of each species of fish 
+
+```{r fig.width= 12, fig.height=5}
+# Creating common titles for the title, x and y axes.
+
+title.common <- textGrob("Species of Fish Over Time", 
+                   gp=gpar(fontsize=20))
+
+y.common <- textGrob("Abundance", 
+                   gp=gpar(fontsize=15), rot=90)
+
+x.common <- textGrob("Date", 
+                   gp=gpar(fontsize=15))
+
+# Arranging the graphs in a grid, removing the y and x axis titles of the orginal graphs, and replacing them with the common y and x axis titles.
+grid.arrange(arrangeGrob(Tilapia_Over_Time + ylab("") + xlab("") + ggtitle("Tilapia"),
+                         Corvina_Over_Time + ylab("") + xlab("") + ggtitle("Corvina"),
+                         Croaker_Over_Time + ylab("") + xlab("") + ggtitle("Croaker"),
+                         ncol = 3, 
+                         top = title.common,
+                         left = y.common, 
+                         bottom = x.common))
+```
+
+Tilapia have shown an increase in abundance over time. Corvina and croaker counts over time are similar in that they both had abundance observed at the beginning of the survey, but shortly after there were little to no observations of either species.
+
+## **Geospatial Observations**
+
+### Survey sites over the Salton Sea
+
+```{r}
+# Load in the shapefiles
+shape_data <- st_read("~/Desktop/Universal Folder/Data Analysis Projects/Salton Sea [ds429]/Quarterly_Fishery_Surveys_-_Salton_Sea") |> 
+  st_transform(3857)  # Transform for compatibility with basemap tiles
+
+# Reading the column names of the shapefile
+names(shape_data)
+
+# Extract coordinates and bind to original data
+shape_data_coords <- shape_data %>%
+  mutate(lon = st_coordinates(geometry)[,1],
+         lat = st_coordinates(geometry)[,2])
+
+# Keep the first SITE for each unique location
+unique_sites <- shape_data_coords %>%
+  group_by(lon, lat) %>%
+  slice(1) %>%  # Keep only the first row for each point, to make the names unique
+  ungroup() %>%
+  mutate(SITE = trimws(gsub("\\(bottom\\) 1", "", SITE))) # Removes "(bottom) 1" and trims any leading/trailing white space. The removal of (bottom) 1 was necessary because there were other site names that indicated the depth at which each site was surveyed and for this map those addional names could clutter the map
+
+# Plot all points, label only one per unique location
+ggplot() +
+  annotation_map_tile(zoom = 10) +
+  geom_sf(data = shape_data, color = "blue", size = 2) +
+  geom_text_repel(data = unique_sites, # To add the unique site names to each point
+                  aes(x = lon, y = lat, label = SITE),
+                  size = 3) +
+  coord_sf(crs = st_crs(shape_data)) +
+  theme_minimal() +
+  labs(title = "Salton Sea Survey Stations")
+```
+
+## Looking at the abundances of Taliapia, Covriva, and Croaker at each survey site on a map
+
+```{r, include=FALSE}
+# This code was used as an example for making the function in the code block below
+shape_data_coords <- shape_data %>%
+  mutate(lon = st_coordinates(geometry)[,1],
+         lat = st_coordinates(geometry)[,2])
+
+tilapia_sites <- shape_data_coords %>%
+  group_by(lon, lat) %>%
+  summarise(TILAPIA = sum(TILAPIA, na.rm = TRUE),
+            geometry = first(geometry)) %>%
+  st_as_sf(crs = st_crs(shape_data))
+
+ggplot() +
+  annotation_map_tile(zoom = 10) +
+  geom_sf(data = tilapia_sites, aes(color = TILAPIA), size = 3) +
+  geom_text_repel(data = unique_sites, # To add the unique site names to each point
+                  aes(x = lon, y = lat, label = SITE),
+                  size = 3) +
+  coord_sf(crs = st_crs(shape_data)) + # coord_sf() ensures that all layers use a common CRS
+  scale_color_viridis_c(option = "C", name = "Tilapia Abundance") +
+  theme_minimal() +
+  labs(title = "Tilapia Abundance at Salton Sea Sampling Stations")
+```
+
+### Making a function for graphing the abundances of a specified species of fish
+
+```{r}
+map_spcies_abundance <- function(data = shape_data_coords, fish_species = "TILAPIA", name = "fish_species Abundance", title = "Species of Fish Abundance at Salton Sea Sampling Stations"){
+  
+  survey_sites <- shape_data_coords %>%
+  group_by(lon, lat) %>%
+  summarise(fish_species = sum({{fish_species}}, na.rm = TRUE),
+            geometry = first(geometry)) %>%
+  st_as_sf(crs = st_crs(shape_data))
+
+ggplot() +
+  annotation_map_tile(zoom = 10) +
+  geom_sf(data = survey_sites, aes(color = fish_species), size = 3) +
+  geom_text_repel(data = unique_sites, # To add the unique site names to each point
+                  aes(x = lon, y = lat, label = SITE),
+                  size = 3) +
+  coord_sf(crs = st_crs(shape_data)) + # coord_sf() ensures that all layers use a common CRS.
+  scale_color_viridis_c(option = "C", name = name) +
+  theme_minimal() +
+  labs(title = title)
+}
+```
+
+```{r}
+tilapia_abundance_map <- map_spcies_abundance(data = shape_data_coords, fish_species = TILAPIA, name = "Tilapia Abundance", title = "Tilapia Abundance at Salton Sea Sampling Stations")
+
+tilapia_abundance_map
+```
+
+North Shore contained most of the tilapia observed and all of the basin locations contained the lowest counts.
+
+```{r}
+corvina_abundance_map <- map_spcies_abundance(data = shape_data_coords, fish_species = CORVINA, name = "Corvina Abundance", title = "Corvina Abundance at Salton Sea Sampling Stations")
+
+corvina_abundance_map
+```
+
+North Shore is also the site with the most abundance of another fish - corvina
+
+```{r}
+croaker_abundance_map <- map_spcies_abundance(data = shape_data_coords, fish_species = CROAKER, name = "Croaker Abundance", title = "Croaker Abundance at Salton Sea Sampling Stations")
+
+croaker_abundance_map
+```
+
+North Wister has the largest abundance of croaker found during the course of the study.
+
+## Abundances of each fish species at each survay site
+
+```{r fig.width= 10, fig.height= 7}
+ggplot(long_dat, aes(x = SITE, y = Fish_Abundance, color = Species)) +
+  geom_point() +
+  theme_bw() +
+  ggtitle("Abundance of Fish At Different Sites") +
+  ylab("Abundance of Fish") +
+  xlab("Site Name") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8))
+```
+
+The site that had the most fish observed was the South Salton City. All of the basins have shown the least abundance of fish across all species. 
+
+## Conclusion
+
+The Salton Sea, a terminal lake facing ecological decline, is currently the focus of active conservation efforts aimed at restoring its health and biodiversity. This analysis reveals distinct trends among the four sportfish species studied. Tilapia populations have shown substantial growth over time, whereas both croaker and corvina experienced rapid declines shortly after monitoring began. Sargo were not observed during the study period and were therefore excluded from the analysis.
+
+Spatially, fish abundance was highest in near-shore habitats, with the central basin yielding the lowest catch rates across all species — emphasizing the importance of shoreline environments for sustaining fish populations in the Sea.

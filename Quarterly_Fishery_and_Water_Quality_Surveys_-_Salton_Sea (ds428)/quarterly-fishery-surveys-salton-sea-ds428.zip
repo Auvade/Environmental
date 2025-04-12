@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+      <meta name="generator" content="ckan 2.9.11" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarterly Fishery Surveys - Salton Sea [ds428] - Dataset - California Natural Resources Agency Open Data</title>
+
+    
+    
+
+    
+    <link rel="shortcut icon" href="/img/cnra_favicon.ico" />
+    
+    
+        
+    <!-- Google tag (gtag.js) -->
+    
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q09GQ8WSZJ"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        
+            gtag('set', 'linker');
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-Q09GQ8WSZJ', {
+                anonymize_ip: true,
+                linker: {
+                    domains: []
+                }
+            });
+        
+
+        
+        
+
+        </script>
+    
+
+    
+    
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-L05EYD0Q7Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L05EYD0Q7Q');
+        </script>
+    
+    
+
+    
+
+
+    
+      
+          <link rel="alternate" type="text/n3" href="https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99.n3"/>
+          <link rel="alternate" type="text/turtle" href="https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99.ttl"/>
+          <link rel="alternate" type="application/rdf+xml" href="https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99.xml"/>
+          <link rel="alternate" type="application/ld+json" href="https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99.jsonld"/>
+      
+    
+
+    
+  
+  
+    
+    
+  
+  
+    
+  
+      
+      
+      
+    
+  
+
+    
+    
+
+
+  <link rel="stylesheet" href="/css/custom.css" />
+
+  
+
+    
+
+    
+    
+
+  <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+
+  
+  
+
+  
+
+    
+
+
+    
+  
+      
+      
+    
+  <script defer src="https://alert.cdt.ca.gov" crossorigin="anonymous"></script>
+
+  
+  <meta property="og:title" content="Quarterly Fishery Surveys - Salton Sea [ds428] - California Natural Resources Agency Open Data">
+  <meta property="og:description" content="In the spring of 2003, California Department of Fish and Game (CDFG) personnel began quarterly sampling of Salton Sea fish at fourteen stations around the sea, as the basis of a long term...">
+
+  
+  <meta property="og:url" content="https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Quarterly Fishery Surveys - Salton Sea [ds428] - California Natural Resources Agency Open Data" />
+  <meta name="twitter:description" content="In the spring of 2003, California Department of Fish and Game (CDFG) personnel began quarterly sampling of Salton Sea fish at fourteen stations around the sea, as the basis of a long term..." />
+
+
+    
+    <link href="/webassets/base/2471d0b8_main.css" rel="stylesheet"/>
+<link href="/webassets/vendor/f3b8236b_select2.css" rel="stylesheet"/>
+<link href="/webassets/vendor/0b01aef1_font-awesome.css" rel="stylesheet"/>
+<link href="/webassets/opengov_custom_theme_resource/5e7cba7d_main.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-scheming/728ec589_scheming_css.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-harvest/ba0d21d4_harvest_css.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-geoview/f197a782_geo-resource-styles.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-featuredviews/eccce1a8_featured.css" rel="stylesheet"/>
+    <style>
+        a {
+  color: #165cab;
+}
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 12px;
+}
+.heading-explanation {
+  font-size: 20px;
+}
+.module-content {
+  padding: 20px 25px;
+}
+.module-heading .action {
+  color: #131517 !important;
+}
+.heading-explanation {
+  font-size: 22px;
+  line-height: 22px;
+}
+.main-featured {
+  background: #EFF2F5;
+}
+.main-updates li.dataset-item {
+  min-height: 165px;
+}
+.main-updates .dataset-list .dataset-item .dataset-content,
+.main-updates .dataset-list .dataset-item .dataset-resources {
+  padding-left: 0;
+}
+.featured-charts-wrap {
+  padding: 0;
+}
+#login-form .form-group,
+.contact-form .form-group {
+  margin-left: 0;
+}
+
+.compressed.masthead .account-masthead .account ul li a {
+  font-size: 16px;
+}
+
+p a {
+  text-decoration: underline;
+}
+.btn {
+  text-decoration: none;
+}
+
+/* CSS for hero slider */
+.tint {
+  background-color: rgba(31, 84, 155, 0.7);
+}
+.hero-text-description {
+  font-size: 22px;
+}
+@media only screen and (min-width: 768px) {
+  .cd-header.cd-half-width {
+    text-align: center;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .cd-header.cd-half-width {
+    text-align: left;
+    width: 50%;
+  }
+}
+
+.label[data-format=geojson],
+.label[data-format*=geojson] {
+  background-color: #85252f !important;
+}
+.label[data-format=gml],
+.label[data-format*=gml] {
+  background-color: #847e31 !important;
+}
+.label[data-format=kml],
+.label[data-format*=kml] {
+  background-color: #223582 !important;
+}
+.label[data-format=shp],
+.label[data-format*=shp] {
+  background-color: #3b2d80 !important;
+}
+.label[data-format=wfs],
+.label[data-format*=wfs] {
+  background-color: #246984 !important;
+}
+.label[data-format=wms],
+.label[data-format*=wms] {
+  background-color: #248462 !important;
+}
+.label[data-format=arcgis],
+.label[data-format*=arcgis],
+.label[data-format=chart],
+.label[data-format*=chart],
+.label[data-format=map] {
+  background-color: #852c7b !important;
+}
+.format-label {
+  background: url(https://cnraprod.ogopendata.com/base/images/sprite-resource-icons.png) no-repeat 0 0;
+  background-position: -1720px -220px;
+}
+      </style>
+    <style>
+
+ .account-masthead {background: #ffffff}
+ .account-masthead .account ul li a:hover {background: #165cab}
+ .account-masthead .account ul li a {color: #07305c}
+ .masthead {background: #ffffff}
+ .masthead .navigation .nav-pills li a:hover,.masthead .navigation .nav-pills li a:focus,.masthead .navigation .nav-pills li.active a,.navbar-toggle {background-color: #165cab}
+ .navbar .nav>li>a,.masthead .nav>li>a,.navbar .navbar-left>h1>a,.navbar .navbar-left>h2 {color: #375f87}
+ .module-heading {background: #eff2f5}
+ .module-heading,.module-heading .action {color: #131517}
+ body, .site-footer, .footer-column-form .cke_reset {background: #1f549b}
+ .site-footer a,.site-footer a:hover,.footer-column-form .cke_reset a {color: #ffffff}
+ .site-footer,.site-footer label,.site-footer small,.footer-column-form .cke_reset {color: #ffffff}</style>
+
+  </head>
+
+  
+  <body data-site-root="https://data.cnra.ca.gov/" data-locale-root="https://data.cnra.ca.gov/" >
+
+    
+  <div class="visually-hidden-focusable skip-content"><a href="#content">Skip to content</a></div>
+
+
+  
+
+  <div class="page" id="page">
+    
+      
+        
+<header class="navbar navbar-static-top masthead compressed">
+  
+      
+  
+  <div class="container">
+    <div class="navbar-right">
+      <button data-target="#main-navigation-toggle" data-toggle="collapse" class="navbar-toggle collapsed" type="button" aria-label="expand or collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="fa fa-bars"></span>
+      </button>
+    </div>
+    <div class="header-image navbar-left">
+      
+         
+      <a class="logo" href="/"><img src="/uploads/admin/2021-10-19-212312.133874CNRA-Logo.png" alt="California Natural Resources Agency Open Data" title="California Natural Resources Agency Open Data" /></a>
+       
+      
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navigation-toggle">
+      
+        <nav class="section navigation">
+          <ul class="nav nav-pills">
+            
+              <li><a href="/dataset">Open Data</a></li><li><a href="/organization">Organizations</a></li><li><a href="/group">Topics</a></li><li><a href="/pages/training">Training</a></li>
+            
+          </ul>
+        </nav>
+      
+      
+        <div class="account-masthead">
+          
+            
+              <nav class="account not-authed" aria-label="Account">
+                <ul class="list-unstyled unstyled">
+                  
+                    
+    
+        <li><a href="/user/login">Log in</a></li>
+         
+    
+    <li>
+      <a href="/contact" title="Contact">
+        
+           Contact
+        
+      </a>
+    </li>
+
+
+                  
+                </ul>
+              </nav>
+            
+          
+        </div>
+      
+
+    </div>
+  </div>
+</header>
+
+      
+    
+      
+    <div class="main">
+      <div id="content" class="container">
+        
+          
+            <div class="flash-messages">
+              
+                
+              
+            </div>
+          
+
+          
+            <div class="toolbar" role="navigation" aria-label="Breadcrumb">
+              
+                
+                  <ol class="breadcrumb">
+                    
+<li class="home"><a href="/" aria-label="Home"><i class="fa fa-home"></i><span> Home</span></a></li>
+                    
+  
+    
+    
+      
+      <li><a href="/organization/">Organizations</a></li>
+      <li><a href="/organization/california-department-of-fish-and-wildlife">California Department of...</a></li>
+    
+    <li class="active"><a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428">Quarterly Fishery Surveys - Salton Sea [ds428]</a></li>
+  
+
+                  </ol>
+                
+              
+            </div>
+          
+
+          <div class="row wrapper">
+            
+            
+  
+  
+      
+    
+
+  <h1 class="dataset-title">
+    
+        Quarterly Fishery Surveys - Salton Sea [ds428]
+        
+        
+      
+  </h1>
+
+  <div class="notes embedded-content">
+    
+      <p>In the spring of 2003, California Department of Fish and Game (CDFG) personnel began quarterly sampling of Salton Sea fish at fourteen stations around the sea, as the basis of a long term monitoring program. To allow comparison of current and future monitoring efforts by CDFG to past results, the protocol was adapted from those previously used by researchers at the Salton Sea. Each quarter, if conditions allow, this protocol will produce about 816 net-hours of sampling. To date data collection was started in the spring of 2003, continuing quarterly. Data collection is ongoing as of 2008. Two seasons were missed due to unavailability of launch sites: Fall 2007 and Winter 2007. *Note: This dataset should be viewed with the Quarterly Water Quality Surveys - Salton Sea [ds429] dataset. Methods: The 11 sampling sites comprise three broad habitat types: pelagic (3 sites), near-shore (8 sites), and estuarine (3 sites). The pelagic sites are in the approximate middles of the north basin, south basin and inter-basin areas of the Sea. The near-shore sites are spaced widely apart, four each, near the west and east shores, to capture as much breadth of habitat as possible. The estuarine sites are in the body of the Sea, close enough to the mouths of the New, Alamo, and Whitewater Rivers, to be under the influence of their outflows. Sampling takes place during each of the putative seasons, as follows: spring- April and May; summer- July and August; fall- October and November; winter- January and February. We attempt to compress the total sampling period into as few days as possible, to the extent that the weather, equipment maintenance, and personnel scheduling constraints allow. Nets are typically set at one or two sites in the morning, and hauled in after approximately 24 hours. The exact number of hours set is recorded for each net, to the nearest quarter-hour. Fish are sampled by deploying multi-panel monofilament gill nets with 6 X 30 foot panels of 0.5, 1, 2, 3, and 4 inch mesh. Two nets are set at all sites at the waters surface. The nets are set far enough apart to allow room for maneuvering a boat during setting and retrieval, usually 100-200 meters. The nets at near-shore and estuarine sites are set in 2.5 to 4.5 meters of water, typically 200-300 meters from the shore. Two additional nets are set at the bottom of water column at the three pelagic sites. The conditions fish experience at the bottom in deep water is different enough from the surface water, in dissolved oxygen, light, food availability and temperature, that this can be considered a discrete habitat, and thus we sample it as though it were a separate site. At the time of each set and retrieval, water depth, water temperature, conductivity, salinity, and dissolved oxygen are measured and recorded. When nets are pulled in the following day, all fish are removed and immediately stored on ice. Data are collected from these fish as soon as possible, almost always the same day they are hauled in. All fish are identified to species level and counted. For the four sport fish in the Salton Sea, (tilapia, Gulf croaker, orangemouth corvina and sargo) weights, lengths (fork length), sex, physical condition, and reproductive status are recorded. Fish above five pounds are weighed to the nearest ounce. Fish below five pounds are weighed to the nearest half ounce. Lengths of fish under 50 centimeters are recorded to the nearest millimeter. Lengths of fish over 50 centimeters are recorded to the nearest centimeter. The sex of adult fish is determined by dissection. A sample of at least ten fish of each species is also dissected to determine physical condition and breeding status. Changes to Protocol after Year One: For previous researchers, deep water habitats provided some low level of productivity for the fisheries, and were important habitat components to sample. During the first year of sampling, however, the three deep water sites (north basin, south basin and inter-basin) were completely unproductive, a costly element of our efforts, and the least probable site for fish use, given the severe reduction in population size which was discovered in 2003. We therefore eliminated sampling at the three deep water sites, which reduced our efforts by 288 net-hours, to a quarterly total effort of 528 net-hours. These sites were left in the protocol, since they will likely provide useful information about population trends and habitat use, should the fisheries rebound to levels which allow robust comparisons among these and the other sampling sites. Footnote: There was a marked change in the weather immediately after our first sampling run on October 13, 2004 resulting in a 6º C drop in water temperature. After seeing how far the number of fish sampled on October 13, 2004 was out of the range of results at subsequent sites, we felt this drop in water temperatures justified resampling the two October 13, 2004 sites. The results were added to the total to compute a CPUE. We originally selected the months of October and November to enclose a putative Fall season, following the convention of Costa-Pierce and Riedel''s study at the Salton Sea in 1999-2000. This approach assumes a biologically significant change in water temperatures between sampling seasons. We have become more hesitant about assuming that the seasons at the Salton Sea fall within their assigned calendar months, and are so clearly discrete. As we saw during this Fall 2004 sampling period, water temperature changes within a sampling period may be as great or greater than those between sampling periods.</p>
+    
+      <a href="https://data-cdfw.opendata.arcgis.com/datasets/CDFW::quarterly-fishery-surveys-salton-sea-ds428" class="btn btn-primary" target="_blank">
+        <i class="fa fa-map"></i> MAP
+      </a>
+    
+  </div>
+
+
+
+            
+              <aside class="secondary col-sm-3">
+                
+                
+
+  
+
+  
+    
+      
+      
+
+
+
+
+  
+  <div class="module module-narrow module-shallow context-info">
+    
+      <h2 class="module-heading"><i class="fa fa-building-o"></i> Organization</h2>
+    
+    <section class="module-content">
+      
+        
+      
+        <div class="image">
+          <a href="/organization/california-department-of-fish-and-wildlife">
+            <img src="https://data.cnra.ca.gov/uploads/group/2018-02-27-155042.328343CDFWInsignia256.png" width="200" alt="california-department-of-fish-and-wildlife" />
+          </a>
+        </div>
+      
+      
+      <h1 class="heading">California Department of Fish and Wildlife
+        
+      </h1>
+      
+      
+      
+        <p class="description">
+          The Mission of the Department of Fish and Wildlife is to manage California's diverse fish, wildlife, and plant resources, and the habitats upon which they depend, for their...
+        </p>
+        <p class="read-more">
+          <a href="/organization/about/california-department-of-fish-and-wildlife">read more</a>
+        </p>
+      
+      
+      
+      
+      
+    </section>
+  </div>
+
+    
+  
+
+  
+    
+
+  <section class="module module-narrow social">
+    
+      <h2 class="module-heading"><i class="fa fa-share-square-o"></i> Social</h2>
+    
+    
+      <ul class="nav nav-simple">
+        <li class="nav-item"><a href="https://twitter.com/share?url=https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+        <li class="nav-item"><a href="https://www.facebook.com/sharer.php?u=https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+        <li class="nav-item"><a href="https://www.linkedin.com/shareArticle?url=https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428" target="_blank"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+      </ul>
+    
+  </section>
+
+  
+
+  
+    
+
+
+  
+      
+        <section class="module module-narrow module-shallow license">
+          
+            <h2 class="module-heading"><i class="fa fa-lock"></i> License</h2>
+          
+          
+            <p class="module-content">
+              
+                
+  
+    <a href="http://www.opendefinition.org/licenses/cc-by" rel="dc:rights">Creative Commons Attribution</a>
+  
+
+                
+                  <a href="http://opendefinition.org/okd/" title="This dataset satisfies the Open Definition.">
+                      <img class="open-data" src="/base/images/od_80x15_blue.png" alt="[Open Data]" />
+                  </a>
+                
+              
+            </p>
+          
+        </section>
+      
+  
+
+  
+
+  <div class="section-divider" style="border-bottom: 2px solid #cccccc;"></div>
+
+  
+    
+
+  
+    <section class="module module-narrow">
+      <div class="module context-info">
+        <div class="module-content">
+          
+            
+              <h1 class="heading">Quarterly Fishery Surveys - Salton Sea [ds428]</h1>
+            
+            
+  
+
+            
+  
+    
+    
+    
+    <div class="nums">
+      
+      <!-- 
+  
+   -->
+      <label class="control-label"
+             for="subscribe-email"
+             title="Receive email updates for this dataset without needing to login."
+             aria-label="Receive email updates for this dataset without needing to login.">Sign up for email updates</label>
+      <form method='post' action="/subscribe/signup" id="subscribe-form" enctype="multipart/form-data" class="form-inline">
+        <!-- (Bootstrap 3) <div class="form-group input-group-sm"> -->
+          <input id="subscribe-email" type="email" name="email" class="form-control input-small" value="" placeholder="Email Address" required />
+          <input id="subscribe-dataset" type="hidden" name="dataset" value="quarterly-fishery-surveys-salton-sea-ds428"` />
+          <input id="subscribe-dataset-title" type="hidden" name="dataset-title" value="Quarterly Fishery Surveys - Salton Sea [ds428]"` />
+        <!-- </div> -->
+        <button type="submit" class="btn btn-primary round-corner-btn" name="save">Subscribe Now</button>
+      </form>
+    </div>
+  
+
+          
+        </div>
+      </div>
+    </section>
+  
+
+  
+
+
+              </aside>
+            
+
+            
+  <div class="primary col-sm-9 col-xs-12 dataset-read" role="main">
+    
+      
+                  <article class="module">
+                    
+                      <header class="module-content page-header">
+                        
+                        <ul class="nav nav-tabs">
+                          
+  <li><a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428"><i class="fa fa-sitemap"></i> Dataset</a></li>
+  <li><a href="/dataset/groups/quarterly-fishery-surveys-salton-sea-ds428"><i class="fa fa-users"></i> Topics</a></li>
+  
+    <li><a href="/dataset/showcases/quarterly-fishery-surveys-salton-sea-ds428"><i class="fa fa-trophy"></i> Showcases</a></li>
+  
+  <li><a href="/dataset/activity/quarterly-fishery-surveys-salton-sea-ds428"><i class="fa fa-clock-o"></i> Activity Stream</a></li>
+
+                        </ul>
+                      </header>
+                    
+                    <div class="module-content">
+                      
+                      
+  
+    
+    
+  
+
+  
+    
+    
+<section id="dataset-resources" class="resources">
+  <h2>Data and Resources</h2>
+  
+    
+      <ul class="resource-list">
+        
+          
+          
+            
+
+
+
+<li class="resource-item" data-id="f61034f4-8bef-4838-8b7d-f3e3d9195299">
+  
+  
+<a class="heading" href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/f61034f4-8bef-4838-8b7d-f3e3d9195299" title="ArcGIS Hub Dataset">
+  ArcGIS Hub Dataset<span class="format-label" property="dc:format" data-format="html">HTML</span>
+  
+
+</a>
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+    <div class="btn-group">
+      <a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/f61034f4-8bef-4838-8b7d-f3e3d9195299" class="btn btn-sm btn-outline-primary" aria-label="Preview resource ArcGIS Hub Dataset">
+        <i class="fa fa-bar-chart-o"></i>
+        Preview
+      </a>
+      
+        <a href="https://data-cdfw.opendata.arcgis.com/datasets/CDFW::quarterly-fishery-surveys-salton-sea-ds428" class="btn btn-sm btn-primary resource-url-analytics" target="_blank" aria-label="Download resource ArcGIS Hub Dataset">
+          <i class="fa fa-arrow-circle-o-down"></i>
+          Download
+        </a>
+      
+      
+    </div>
+  
+
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="04582559-fdfc-4ffc-8998-1f6ab729cbad">
+  
+  
+<a class="heading" href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/04582559-fdfc-4ffc-8998-1f6ab729cbad" title="ArcGIS GeoService">
+  ArcGIS GeoService<span class="format-label" property="dc:format" data-format="arcgis geoservices rest api">ArcGIS GeoServices REST API</span>
+  
+
+</a>
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+    <div class="btn-group">
+      <a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/04582559-fdfc-4ffc-8998-1f6ab729cbad" class="btn btn-sm btn-outline-primary" aria-label="Preview resource ArcGIS GeoService">
+        <i class="fa fa-bar-chart-o"></i>
+        Preview
+      </a>
+      
+        <a href="https://services2.arcgis.com/Uq9r85Potqm3MfRV/arcgis/rest/services/biosds428_fmu/FeatureServer/0" class="btn btn-sm btn-primary resource-url-analytics" target="_blank" aria-label="Download resource ArcGIS GeoService">
+          <i class="fa fa-arrow-circle-o-down"></i>
+          Download
+        </a>
+      
+      
+    </div>
+  
+
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="deccec33-4b78-4470-b7e0-45cbf13dca43">
+  
+  
+<a class="heading" href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/deccec33-4b78-4470-b7e0-45cbf13dca43" title="CSV">
+  CSV<span class="format-label" property="dc:format" data-format="csv">CSV</span>
+  
+
+</a>
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+    <div class="btn-group">
+      <a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/deccec33-4b78-4470-b7e0-45cbf13dca43" class="btn btn-sm btn-outline-primary" aria-label="Preview resource CSV">
+        <i class="fa fa-bar-chart-o"></i>
+        Preview
+      </a>
+      
+        <a href="https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/csv?layers=0" class="btn btn-sm btn-primary resource-url-analytics" target="_blank" aria-label="Download resource CSV">
+          <i class="fa fa-arrow-circle-o-down"></i>
+          Download
+        </a>
+      
+      
+    </div>
+  
+
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="f487f319-248a-4424-9b05-f01a86620a81">
+  
+  
+<a class="heading" href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/f487f319-248a-4424-9b05-f01a86620a81" title="Shapefile">
+  Shapefile<span class="format-label" property="dc:format" data-format="zip">ZIP</span>
+  
+
+</a>
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+    <div class="btn-group">
+      <a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/f487f319-248a-4424-9b05-f01a86620a81" class="btn btn-sm btn-outline-primary" aria-label="Preview resource Shapefile">
+        <i class="fa fa-bar-chart-o"></i>
+        Preview
+      </a>
+      
+        <a href="https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/shapefile?layers=0" class="btn btn-sm btn-primary resource-url-analytics" target="_blank" aria-label="Download resource Shapefile">
+          <i class="fa fa-arrow-circle-o-down"></i>
+          Download
+        </a>
+      
+      
+    </div>
+  
+
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="ea39e6a7-c850-4c73-9ac5-37a8f8f2c414">
+  
+  
+<a class="heading" href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/ea39e6a7-c850-4c73-9ac5-37a8f8f2c414" title="GeoJSON">
+  GeoJSON<span class="format-label" property="dc:format" data-format="geojson">GeoJSON</span>
+  
+
+</a>
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+    <div class="btn-group">
+      <a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/ea39e6a7-c850-4c73-9ac5-37a8f8f2c414" class="btn btn-sm btn-outline-primary" aria-label="Preview resource GeoJSON">
+        <i class="fa fa-bar-chart-o"></i>
+        Preview
+      </a>
+      
+        <a href="https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/geojson?layers=0" class="btn btn-sm btn-primary resource-url-analytics" target="_blank" aria-label="Download resource GeoJSON">
+          <i class="fa fa-arrow-circle-o-down"></i>
+          Download
+        </a>
+      
+      
+    </div>
+  
+
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="69c7669a-a5ce-4793-b864-9485c7b32531">
+  
+  
+<a class="heading" href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/69c7669a-a5ce-4793-b864-9485c7b32531" title="KML">
+  KML<span class="format-label" property="dc:format" data-format="kml">KML</span>
+  
+
+</a>
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+    <div class="btn-group">
+      <a href="/dataset/quarterly-fishery-surveys-salton-sea-ds428/resource/69c7669a-a5ce-4793-b864-9485c7b32531" class="btn btn-sm btn-outline-primary" aria-label="Preview resource KML">
+        <i class="fa fa-bar-chart-o"></i>
+        Preview
+      </a>
+      
+        <a href="https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/kml?layers=0" class="btn btn-sm btn-primary resource-url-analytics" target="_blank" aria-label="Download resource KML">
+          <i class="fa fa-arrow-circle-o-down"></i>
+          Download
+        </a>
+      
+      
+    </div>
+  
+
+</li>
+          
+        
+      </ul>
+    
+    
+</section>
+  
+  
+
+  
+    
+    
+
+  <section class="tags">
+    
+
+
+  <ul class="tag-list well">
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=__">__</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=anisotremus+davidsoni">anisotremus davidsoni</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=authcdfw">authcdfw</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=bairdiella+icistia">bairdiella icistia</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=california+department+of+fish+and+wildlife">california departme...</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=california+natural+resources+agency">california natural ...</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=caopendata">caopendata</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=cdfw">cdfw</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=cn+tilapia">cn tilapia</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=corvina">corvina</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=croaker">croaker</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=cynoscion+xanthulus">cynoscion xanthulus</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=ds042820080918wm">ds042820080918wm</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=fish">fish</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=sargo">sargo</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=sn+oreochromis+mossambicus+x+o+urolepis+hornorum">sn oreochromis moss...</a>
+      </li>
+    
+  </ul>
+
+  </section>
+
+  
+  
+
+  
+  <section class="additional-info">
+  <h3 style="display:inline-block;">Additional Info</h3>
+  <div class="btn-group" style="margin-left:5px; margin-bottom:10px;">
+    <a class="btn btn-primary round-corner-btn" href="/metadata_download/quarterly-fishery-surveys-salton-sea-ds428"><i class="fa fa-arrow-circle-o-down icon-download"></i> Download</a>
+  </div>
+  <table class="table table-striped table-bordered table-condensed" summary="metadata about the dataset">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      
+      
+
+      
+        <tr>
+          <th scope="row" class="dataset-label">Publisher</th>
+          <td class="dataset-details">
+            California Department of Fish and Wildlife
+          </td>
+        </tr>
+      
+
+      
+      <tr>
+            <th scope="row" class="dataset-label">Homepage URL</th>
+            <td class="dataset-details" property="foaf:homepage"><a href="https://data-cdfw.opendata.arcgis.com/datasets/CDFW::quarterly-fishery-surveys-salton-sea-ds428" rel="foaf:homepage" target="_blank">https://data-cdfw.opendata.arcgis.com/datasets/CDFW::quarterly-fishery-surveys-salton-sea-ds428</a></td>
+          </tr><tr>
+            <th scope="row" class="dataset-label">Contact Name</th>
+            <td class="dataset-details">BIOS_Admin</td>
+          </tr><tr>
+            <th scope="row" class="dataset-label">Contact Email</th>
+            <td class="dataset-details"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee898b818a8f9a8fae9987828a8287888bc08d8fc0898198">[email&#160;protected]</a></td>
+          </tr><tr>
+            <th scope="row" class="dataset-label">Public Access Level</th>
+            <td class="dataset-details">Public</td>
+          </tr><tr>
+            <th scope="row" class="dataset-label">Language</th>
+            <td class="dataset-details">English</td>
+          </tr><tr>
+            <th scope="row" class="dataset-label">Spatial Coverage</th>
+            <td class="dataset-details">
+        
+    
+        
+    
+        
+    
+        
+    
+                    
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://greeninfo-network.github.io/cnra-gazetteer/api/api.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://greeninfo-network.github.io/cnra-gazetteer/api/api.css" />
+        <script type="text/javascript">
+        window.addEventListener("load", function() {
+            var widgetdivid = 'gazetteer-spatial_details';
+
+            var bboxdata = {"type": "Polygon", "coordinates": [[[-116.0532,33.1345],[-116.0532,33.5182],[-115.6212,33.5182],[-115.6212,33.1345],[-116.0532,33.1345]]]};
+            var bboxgeojsondoc = {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "type": "Feature",
+                        "geometry": bboxdata
+                    }
+                ]
+            };
+
+            new CNRA.GazetteerWidget(widgetdivid, {
+                displayOnly: true,
+                labelBoxCorners: true,
+                geocoderControl: false,
+                basemapControl: false,
+                showBoundingBox: true,
+                minZoom: 4,
+                onLoad: function () {
+                    this.loadGeoJsonObject(bboxgeojsondoc);
+                }
+            });
+        });
+        </script>
+        <div id="gazetteer-spatial_details" style="background-color: #ffffff; border: 1px solid #cccccc; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); border-radius: 3px;"></div>
+        
+    </td>
+          </tr>
+
+      
+
+      
+
+      
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+
+    
+  </tbody>
+</table>
+</section>
+
+
+                    </div>
+                  </article>
+                
+    
+  </div>
+
+          </div>
+        
+      </div>
+    </div>
+  
+    
+      
+  
+      <footer class="site-footer">
+  <div class="container">
+    
+  <div class="row">
+    
+    
+    
+      <div class="col-md-4 span4 footer-links">
+        <ul class="list-unstyled">
+	<li><a href="/about">About California Natural Resources Agency Open Data</a></li>
+	<li><a href="https://docs.ckan.org/en/2.9/api/" target="_blank">API Documentation</a></li>
+	<li><a href="/pages/metrics">Portal Metrics</a></li>
+	<li><a href="/contact">Contact Us</a></li>
+	<li><a href="/pages/glossary">Glossary</a></li>
+</ul>
+
+      </div>
+    
+      <div class="col-md-4 span4 footer-links">
+        
+      </div>
+    
+      <div class="col-md-4 span4 footer-links">
+        
+      </div>
+    
+    <div class="attribution og-attribution">
+      
+        <strong>Powered by</strong>
+        <div class="og-links">
+          <a class="pull-left" href="https://opengov.com/?utm_campaign=Footer-Product-OpenData&utm_source=OpenGov&utm_medium=product&utm_term=PO-OGOV-1274&utm_content=logo" target="_blank">
+            <img src="/img/OpenGov-Logo-RGB-White.svg" alt="OpenGov" height="25">
+          </a>
+          <a class="hide-text ckan-footer-logo pull-right" href="https://ckan.org" target="_blank">CKAN</a>
+        </div>
+      
+      
+        
+<form class="form-inline form-select lang-select" action="/util/redirect" data-module="select-switch" method="POST">
+  <label for="field-lang-select">Language</label>
+  <select id="field-lang-select" name="url" data-module="autocomplete" data-module-dropdown-class="lang-dropdown" data-module-container-class="lang-container">
+    
+      <option value="/en/dataset/quarterly-fishery-surveys-salton-sea-ds428" selected="selected">
+        English
+      </option>
+    
+      <option value="/pt_BR/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        português (Brasil)
+      </option>
+    
+      <option value="/ja/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        日本語
+      </option>
+    
+      <option value="/it/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        italiano
+      </option>
+    
+      <option value="/cs_CZ/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        čeština (Česko)
+      </option>
+    
+      <option value="/ca/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        català
+      </option>
+    
+      <option value="/es/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        español
+      </option>
+    
+      <option value="/fr/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        français
+      </option>
+    
+      <option value="/el/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Ελληνικά
+      </option>
+    
+      <option value="/sv/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        svenska
+      </option>
+    
+      <option value="/sr/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        српски
+      </option>
+    
+      <option value="/no/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        norsk
+      </option>
+    
+      <option value="/sk/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        slovenčina
+      </option>
+    
+      <option value="/fi/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        suomi
+      </option>
+    
+      <option value="/ru/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        русский
+      </option>
+    
+      <option value="/de/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Deutsch
+      </option>
+    
+      <option value="/pl/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        polski
+      </option>
+    
+      <option value="/nl/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Nederlands
+      </option>
+    
+      <option value="/bg/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        български
+      </option>
+    
+      <option value="/ko_KR/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        한국어 (대한민국)
+      </option>
+    
+      <option value="/hu/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        magyar
+      </option>
+    
+      <option value="/sl/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        slovenščina
+      </option>
+    
+      <option value="/lv/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        latviešu
+      </option>
+    
+      <option value="/am/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        አማርኛ
+      </option>
+    
+      <option value="/ar/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        العربية
+      </option>
+    
+      <option value="/bs/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        bosanski
+      </option>
+    
+      <option value="/da_DK/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        dansk (Danmark)
+      </option>
+    
+      <option value="/en_AU/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        English (Australia)
+      </option>
+    
+      <option value="/es_AR/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        español (Argentina)
+      </option>
+    
+      <option value="/eu/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        euskara
+      </option>
+    
+      <option value="/fa_IR/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        فارسی (ایران)
+      </option>
+    
+      <option value="/gl/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        galego
+      </option>
+    
+      <option value="/he/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        עברית
+      </option>
+    
+      <option value="/hr/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        hrvatski
+      </option>
+    
+      <option value="/id/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Indonesia
+      </option>
+    
+      <option value="/is/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        íslenska
+      </option>
+    
+      <option value="/km/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        ខ្មែរ
+      </option>
+    
+      <option value="/lt/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        lietuvių
+      </option>
+    
+      <option value="/mk/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        македонски
+      </option>
+    
+      <option value="/mn_MN/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        монгол (Монгол)
+      </option>
+    
+      <option value="/my_MM/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        မြန်မာ (မြန်မာ)
+      </option>
+    
+      <option value="/nb_NO/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        norsk bokmål (Norge)
+      </option>
+    
+      <option value="/ne/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        नेपाली
+      </option>
+    
+      <option value="/pt_PT/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        português (Portugal)
+      </option>
+    
+      <option value="/ro/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        română
+      </option>
+    
+      <option value="/sq/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        shqip
+      </option>
+    
+      <option value="/sr_Latn/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        srpski (latinica)
+      </option>
+    
+      <option value="/th/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        ไทย
+      </option>
+    
+      <option value="/tl/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Filipino (Pilipinas)
+      </option>
+    
+      <option value="/tr/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Türkçe
+      </option>
+    
+      <option value="/uk/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        українська
+      </option>
+    
+      <option value="/uk_UA/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        українська (Україна)
+      </option>
+    
+      <option value="/vi/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        Tiếng Việt
+      </option>
+    
+      <option value="/zh_Hans_CN/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        中文 (简体, 中国)
+      </option>
+    
+      <option value="/zh_Hant_TW/dataset/quarterly-fishery-surveys-salton-sea-ds428" >
+        中文 (繁體, 台灣)
+      </option>
+    
+  </select>
+  <button class="btn btn-default js-hide" type="submit">Go</button>
+</form>
+      
+    </div>
+  </div>
+
+  </div>
+
+  
+    
+  
+</footer>
+  
+
+    </div>
+
+  
+    
+  
+  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+        
+        
+        <div class="js-hide" data-module="google-analytics"
+             data-module-googleanalytics_resource_prefix="/downloads/">
+        </div>
+    
+
+  <script>
+    var writeKey = "3L1FWi3tBfRI7pt0n1tb6w8WhTvMNObJ";
+    if(writeKey !== ""){
+      !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey=writeKey;;analytics.SNIPPET_VERSION="5.2.0";
+        
+      }}();
+    }
+  </script>
+
+
+  
+  
+
+    
+        
+        
+        
+    
+
+
+  
+    
+      
+          <script type="application/ld+json">
+           {
+    "@context": {
+        "brick": "https://brickschema.org/schema/Brick#",
+        "csvw": "http://www.w3.org/ns/csvw#",
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "dcam": "http://purl.org/dc/dcam/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dcmitype": "http://purl.org/dc/dcmitype/",
+        "dcterms": "http://purl.org/dc/terms/",
+        "doap": "http://usefulinc.com/ns/doap#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "geo": "http://www.opengis.net/ont/geosparql#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "org": "http://www.w3.org/ns/org#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "prof": "http://www.w3.org/ns/dx/prof/",
+        "prov": "http://www.w3.org/ns/prov#",
+        "qb": "http://purl.org/linked-data/cube#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "sh": "http://www.w3.org/ns/shacl#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "sosa": "http://www.w3.org/ns/sosa/",
+        "ssn": "http://www.w3.org/ns/ssn/",
+        "time": "http://www.w3.org/2006/time#",
+        "vann": "http://purl.org/vocab/vann/",
+        "void": "http://rdfs.org/ns/void#",
+        "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@graph": [
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/f487f319-248a-4424-9b05-f01a86620a81",
+            "@type": "schema:DataDownload",
+            "schema:encodingFormat": "ZIP",
+            "schema:name": "Shapefile",
+            "schema:url": "https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/shapefile?layers=0"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/ea39e6a7-c850-4c73-9ac5-37a8f8f2c414",
+            "@type": "schema:DataDownload",
+            "schema:encodingFormat": "GeoJSON",
+            "schema:name": "GeoJSON",
+            "schema:url": "https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/geojson?layers=0"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/f61034f4-8bef-4838-8b7d-f3e3d9195299",
+            "@type": "schema:DataDownload",
+            "schema:encodingFormat": "HTML",
+            "schema:name": "ArcGIS Hub Dataset",
+            "schema:url": "https://data-cdfw.opendata.arcgis.com/datasets/CDFW::quarterly-fishery-surveys-salton-sea-ds428"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/69c7669a-a5ce-4793-b864-9485c7b32531",
+            "@type": "schema:DataDownload",
+            "schema:encodingFormat": "KML",
+            "schema:name": "KML",
+            "schema:url": "https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/kml?layers=0"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/organization/553c44bc-a99d-4f69-902f-8b883b377056",
+            "@type": "schema:Organization",
+            "schema:contactPoint": {
+                "@id": "_:N6f156d39a3314881baabe4f1ed7fb208"
+            },
+            "schema:name": "California Department of Fish and Wildlife"
+        },
+        {
+            "@id": "_:N6f156d39a3314881baabe4f1ed7fb208",
+            "@type": "schema:ContactPoint",
+            "schema:contactType": "customer service",
+            "schema:email": "geodata@wildlife.ca.gov",
+            "schema:name": "BIOS_Admin",
+            "schema:url": "https://data.cnra.ca.gov"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/deccec33-4b78-4470-b7e0-45cbf13dca43",
+            "@type": "schema:DataDownload",
+            "schema:encodingFormat": "CSV",
+            "schema:name": "CSV",
+            "schema:url": "https://data-cdfw.opendata.arcgis.com/api/download/v1/items/e61e9ff0e6fa490a9dfb2e038774075b/csv?layers=0"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/04582559-fdfc-4ffc-8998-1f6ab729cbad",
+            "@type": "schema:DataDownload",
+            "schema:encodingFormat": "ArcGIS GeoServices REST API",
+            "schema:name": "ArcGIS GeoService",
+            "schema:url": "https://services2.arcgis.com/Uq9r85Potqm3MfRV/arcgis/rest/services/biosds428_fmu/FeatureServer/0"
+        },
+        {
+            "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99",
+            "@type": "schema:Dataset",
+            "schema:about": {
+                "@id": "_:N2d5436d245a34a549698b15a61d7c914"
+            },
+            "schema:creator": {
+                "@id": "https://data.cnra.ca.gov/organization/553c44bc-a99d-4f69-902f-8b883b377056"
+            },
+            "schema:dateModified": [
+                "2020-03-07T03:52:34.636000+00:00",
+                "2020-03-07T03:52:34.636Z"
+            ],
+            "schema:datePublished": [
+                "2018-02-13T17:41:10.000Z",
+                "2018-02-13T17:41:10+00:00"
+            ],
+            "schema:description": "In the spring of 2003, California Department of Fish and Game (CDFG) personnel began quarterly sampling of Salton Sea fish at fourteen stations around the sea, as the basis of a long term monitoring program. To allow comparison of current and future monitoring efforts by CDFG to past results, the protocol was adapted from those previously used by researchers at the Salton Sea. Each quarter, if conditions allow, this protocol will produce about 816 net-hours of sampling. To date data collection was started in the spring of 2003, continuing quarterly. Data collection is ongoing as of 2008. Two seasons were missed due to unavailability of launch sites: Fall 2007 and Winter 2007. *Note: This dataset should be viewed with the Quarterly Water Quality Surveys - Salton Sea [ds429] dataset. Methods: The 11 sampling sites comprise three broad habitat types: pelagic (3 sites), near-shore (8 sites), and estuarine (3 sites). The pelagic sites are in the approximate middles of the north basin, south basin and inter-basin areas of the Sea. The near-shore sites are spaced widely apart, four each, near the west and east shores, to capture as much breadth of habitat as possible. The estuarine sites are in the body of the Sea, close enough to the mouths of the New, Alamo, and Whitewater Rivers, to be under the influence of their outflows. Sampling takes place during each of the putative seasons, as follows: spring- April and May; summer- July and August; fall- October and November; winter- January and February. We attempt to compress the total sampling period into as few days as possible, to the extent that the weather, equipment maintenance, and personnel scheduling constraints allow. Nets are typically set at one or two sites in the morning, and hauled in after approximately 24 hours. The exact number of hours set is recorded for each net, to the nearest quarter-hour. Fish are sampled by deploying multi-panel monofilament gill nets with 6 X 30 foot panels of 0.5, 1, 2, 3, and 4 inch mesh. Two nets are set at all sites at the waters surface. The nets are set far enough apart to allow room for maneuvering a boat during setting and retrieval, usually 100-200 meters. The nets at near-shore and estuarine sites are set in 2.5 to 4.5 meters of water, typically 200-300 meters from the shore. Two additional nets are set at the bottom of water column at the three pelagic sites. The conditions fish experience at the bottom in deep water is different enough from the surface water, in dissolved oxygen, light, food availability and temperature, that this can be considered a discrete habitat, and thus we sample it as though it were a separate site. At the time of each set and retrieval, water depth, water temperature, conductivity, salinity, and dissolved oxygen are measured and recorded. When nets are pulled in the following day, all fish are removed and immediately stored on ice. Data are collected from these fish as soon as possible, almost always the same day they are hauled in. All fish are identified to species level and counted. For the four sport fish in the Salton Sea, (tilapia, Gulf croaker, orangemouth corvina and sargo) weights, lengths (fork length), sex, physical condition, and reproductive status are recorded. Fish above five pounds are weighed to the nearest ounce. Fish below five pounds are weighed to the nearest half ounce. Lengths of fish under 50 centimeters are recorded to the nearest millimeter. Lengths of fish over 50 centimeters are recorded to the nearest centimeter. The sex of adult fish is determined by dissection. A sample of at least ten fish of each species is also dissected to determine physical condition and breeding status. Changes to Protocol after Year One: For previous researchers, deep water habitats provided some low level of productivity for the fisheries, and were important habitat components to sample. During the first year of sampling, however, the three deep water sites (north basin, south basin and inter-basin) were completely unproductive, a costly element of our efforts, and the least probable site for fish use, given the severe reduction in population size which was discovered in 2003. We therefore eliminated sampling at the three deep water sites, which reduced our efforts by 288 net-hours, to a quarterly total effort of 528 net-hours. These sites were left in the protocol, since they will likely provide useful information about population trends and habitat use, should the fisheries rebound to levels which allow robust comparisons among these and the other sampling sites. Footnote: There was a marked change in the weather immediately after our first sampling run on October 13, 2004 resulting in a 6\u00ba C drop in water temperature. After seeing how far the number of fish sampled on October 13, 2004 was out of the range of results at subsequent sites, we felt this drop in water temperatures justified resampling the two October 13, 2004 sites. The results were added to the total to compute a CPUE. We originally selected the months of October and November to enclose a putative Fall season, following the convention of Costa-Pierce and Riedel''s study at the Salton Sea in 1999-2000. This approach assumes a biologically significant change in water temperatures between sampling seasons. We have become more hesitant about assuming that the seasons at the Salton Sea fall within their assigned calendar months, and are so clearly discrete. As we saw during this Fall 2004 sampling period, water temperature changes within a sampling period may be as great or greater than those between sampling periods.",
+            "schema:distribution": [
+                {
+                    "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/04582559-fdfc-4ffc-8998-1f6ab729cbad"
+                },
+                {
+                    "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/f487f319-248a-4424-9b05-f01a86620a81"
+                },
+                {
+                    "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/f61034f4-8bef-4838-8b7d-f3e3d9195299"
+                },
+                {
+                    "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/deccec33-4b78-4470-b7e0-45cbf13dca43"
+                },
+                {
+                    "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/69c7669a-a5ce-4793-b864-9485c7b32531"
+                },
+                {
+                    "@id": "https://data.cnra.ca.gov/dataset/9ff95719-c600-434a-8a6b-d446c4045e99/resource/ea39e6a7-c850-4c73-9ac5-37a8f8f2c414"
+                }
+            ],
+            "schema:inLanguage": "English",
+            "schema:includedInDataCatalog": {
+                "@id": "_:N428e5f5c75bd4b02a1eef0b3367e277a"
+            },
+            "schema:keywords": [
+                "bairdiella icistia",
+                "cdfw",
+                "california natural resources agency",
+                "caopendata",
+                "california department of fish and wildlife",
+                "sargo",
+                "cn tilapia",
+                "cynoscion xanthulus",
+                "corvina",
+                "__",
+                "ds042820080918wm",
+                "croaker",
+                "authcdfw",
+                "sn oreochromis mossambicus x o urolepis hornorum",
+                "fish",
+                "anisotremus davidsoni"
+            ],
+            "schema:license": "http://www.opendefinition.org/licenses/cc-by",
+            "schema:name": "Quarterly Fishery Surveys - Salton Sea [ds428]",
+            "schema:publisher": {
+                "@id": "_:N06230a362b1040e0b2cd9c565450f958"
+            },
+            "schema:spatialCoverage": {
+                "@id": "_:Nd2a9334f14504f21b1fad42baf842a7b"
+            },
+            "schema:url": "https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428"
+        },
+        {
+            "@id": "_:N428e5f5c75bd4b02a1eef0b3367e277a",
+            "@type": "schema:DataCatalog",
+            "schema:description": "Open Data Publishing Platform",
+            "schema:name": "California Natural Resources Agency Open Data",
+            "schema:url": "https://data.cnra.ca.gov"
+        },
+        {
+            "@id": "_:Nd2a9334f14504f21b1fad42baf842a7b",
+            "@type": "schema:Place",
+            "schema:geo": {
+                "@id": "_:N94b534d19b394c2b89580f1587b21e62"
+            }
+        },
+        {
+            "@id": "_:N94b534d19b394c2b89580f1587b21e62",
+            "@type": "schema:GeoShape",
+            "schema:polygon": "{\"type\": \"Polygon\", \"coordinates\": [[[-116.0532,33.1345],[-116.0532,33.5182],[-115.6212,33.5182],[-115.6212,33.1345],[-116.0532,33.1345]]]}"
+        },
+        {
+            "@id": "_:N06230a362b1040e0b2cd9c565450f958",
+            "@type": "schema:Organization",
+            "schema:contactPoint": {
+                "@id": "_:N3537a8e285a04dc6a862e0cf8688acdf"
+            },
+            "schema:name": "California Department of Fish and Wildlife"
+        },
+        {
+            "@id": "_:N3537a8e285a04dc6a862e0cf8688acdf",
+            "@type": "schema:ContactPoint",
+            "schema:contactType": "customer service",
+            "schema:email": "geodata@wildlife.ca.gov",
+            "schema:name": "California Department of Fish and Wildlife",
+            "schema:url": "https://data.cnra.ca.gov"
+        },
+        {
+            "@id": "_:N2d5436d245a34a549698b15a61d7c914",
+            "@type": "schema:Thing",
+            "schema:name": "wildlife",
+            "schema:url": "https://data.cnra.ca.gov/group/72349ded-7fc9-4cdf-b5f6-8b732470d9fb"
+        }
+    ]
+}
+          </script>
+      
+  
+
+      
+
+    
+    
+    <link href="/webassets/ckanext-subscribe/95db3b31_subscribe.css" rel="stylesheet"/>
+<link href="/webassets/cnra_schema/29f00964_composite_display_snippet.css" rel="stylesheet"/>
+    <script src="/webassets/vendor/d8ae4bed_jquery.js" type="text/javascript"></script>
+<script src="/webassets/vendor/bfa47fa0_vendor.js" type="text/javascript"></script>
+<script src="/webassets/vendor/580fa18d_bootstrap.js" type="text/javascript"></script>
+<script src="/webassets/base/15a18f6c_main.js" type="text/javascript"></script>
+<script src="/webassets/opengov_custom_theme_resource/20c99d92_main.js" type="text/javascript"></script>
+<script src="/webassets/showcase/3481086b_slick.js" type="text/javascript"></script>
+<script src="/webassets/opengov_custom_theme/ec09b476_theme.js" type="text/javascript"></script>
+<script src="/webassets/base/2448af8b_ckan.js" type="text/javascript"></script>
+<script src="/webassets/base/cd2c0272_tracking.js" type="text/javascript"></script>
+<script src="/webassets/ckanext-googleanalytics/event_tracking.js?71ae8997" type="text/javascript"></script>
+<script src="/webassets/vendor/76d36bbb_fileupload.js" type="text/javascript"></script>
+<script src="/webassets/ckanext-cloudstorage/0cf5be9f_main.js" type="text/javascript"></script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92bbe0893a0f9351',t:'MTc0Mzg4NTgwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

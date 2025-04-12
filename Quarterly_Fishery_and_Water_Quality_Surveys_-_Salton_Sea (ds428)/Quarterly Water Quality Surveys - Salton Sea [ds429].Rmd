@@ -1,0 +1,137 @@
+---
+title: "Quarterly Water Quality Surveys - Salton Sea [ds429]"
+author: "Bodhi Hueffmeier"
+date: "2025-04-11"
+output: html_document
+---
+
+# Sampling Methods Overview
+
+Beginning in spring 2003, the California Department of Fish and Game (CDFG) initiated a long-term monitoring program involving quarterly fish sampling at multiple stations across the Salton Sea. Water quality data were collected simultaneously at each sampling location. (Note: This dataset is designed to be used alongside the Quarterly Fishery Surveys - Salton Sea [ds428].)
+
+## The survey initially included 14 stations across three main habitat types:
+	•	Pelagic (open water): 3 sites located in the central regions of the north basin, south basin, and inter-basin.
+	•	Near-shore: 8 sites distributed along both the east and west shores.
+	•	Estuarine: 3 sites near the mouths of the New, Alamo, and Whitewater Rivers, where river inflow influences habitat conditions.
+
+Due to a lack of fish capture during the first year, the three deep-water pelagic sites were removed from the sampling protocol in later years.
+
+## Sampling was conducted seasonally:
+	•	Spring – April to May
+	•	Summer – July to August
+	•	Fall – October to November
+	•	Winter – January to February
+
+Each sampling event aimed to take place over a condensed time frame, depending on weather, equipment availability, and staffing. Gill nets were deployed for approximately 24 hours at each site. During net setting and retrieval, environmental parameters—including water temperature, conductivity, specific conductivity, dissolved oxygen, and depth—were recorded using a YSI Model 85 meter. 
+
+Salinity was derived from specific conductivity using the following formula:
+Salinity = 0.013(SC²) - 0.233(SC) + 17.102
+
+[Quarterly Water Quality Surveys - Salton Sea [ds429]](https://data.cnra.ca.gov/dataset/quarterly-water-quality-surveys-salton-sea-ds429/resource/9c6e58b5-bd68-444d-ae1e-f0ab8904ad4f)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r klippy, include=FALSE}
+klippy::klippy(
+  lang = c("r", "markdown"),
+  all_precode = FALSE,
+  position = c("top", "right"),
+  color = "lightblue",
+  tooltip_message = "Copy code",
+  tooltip_success = "Copied!"
+)
+```
+
+### Setting up the libraries, working directory, and data
+```{r}
+library(readr)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library("ggbreak") # For creating breaks in the x or y axes
+library("patchwork") # For creating breaks in the x or y axes
+
+setwd("~/Desktop/Universal Folder/Data Analysis Projects/Salton Sea [ds429]/Quarterly_Fishery_Surveys_-_Salton_Sea")
+
+water_dat <- read_csv("Quarterly_Water_Quality_Surveys_-_Salton_Sea_[ds429].csv")
+
+str(water_dat)
+```
+
+TEMP_C, CONDUCTIVI, SP_CONDUCT, SALINITY, DISS_OXYGE have their data type classified as charters because "N/A" was in the CSV file. 
+All of these columns will be have the "N/A" values converted to "NA" values and those data will be classified as doubles.
+
+```{r}
+cols_to_convert <- c("TEMP_C", "CONDUCTIVI", "SP_CONDUCT", "SALINITY", "DISS_OXYGE")
+
+water_dat <- water_dat %>%
+  mutate(across(all_of(cols_to_convert), ~ as.double(na_if(., "N/A"))))  # changing all of the columns listed in the cols_to_convert object as numeric and if any "N/A" value is present it is then converted to NA as a double.
+                
+str(water_dat)
+```
+
+### Adding in a variable called Date and having the data type in the date format
+
+```{r}
+water_dat <- water_dat %>% 
+  mutate(Date = as.Date(ymd_hms(water_dat$DATE_)))
+```
+
+
+```{r}
+limited.water.data <- water_dat %>%
+  select(-c(DATE_, COMMENTS, UTM_E, UTM_N, SP_CONDUCT, CONDUCTIVI, X, Y, PROBE, OBJECTID, DISS_OXYGE, SITE))
+
+limited.water.data
+
+plot(limited.water.data)
+```
+The average salinity of the ocean is typically around 35 grams of salt per kilogram (g/kg) of seawater according to [USGS, 2022-03-14](https://www.usgs.gov/faqs/why-ocean-salty#:~:text=The%20concentration%20of%20salt%20in,comes%20from%20the%20dissolved%20salts.)
+
+```{r}
+no_na_salinity <- water_dat %>%     # Removing NAs from the water data
+  drop_na(SALINITY)
+
+salinity_time <- ggplot(data = no_na_salinity, aes(x = Date, y = SALINITY, color = SITE)) +
+  geom_line() +
+  geom_hline(yintercept = 35, linetype = "dashed", color = "darkblue") +
+  annotate("text", x = as.Date("2005-07-01"), y = 35.5, 
+           label = "Avg Ocean Salinity (35 ppt)", 
+           color = "darkblue", hjust = 0, vjust = -0.2) +
+  theme_bw() +
+  ggtitle("Salinity Over Time") +
+  ylab("Salinity (ppt)") +
+  labs(color = "Sampling Sites")
+
+salinity_time
+```
+
+```{r}
+temp_time <- ggplot(data = water_dat, aes(x = Date, y = TEMP_C, color = SITE)) +
+  geom_line() +
+  ggtitle("Temperature Over Time") +
+  ylab("Temperature (°C)") +
+  labs(color = "Sampling Sites") +
+  theme_bw()
+
+temp_time
+```
+
+```{r}
+oxygen_time <- ggplot(data = water_dat, aes(x = Date, y = DISS_OXYGE, color = SITE)) +
+  geom_line() +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "darkblue") +
+  geom_hline(yintercept = 8, linetype = "dashed", color = "darkblue") +
+  annotate("text", x = as.Date("2006-01-01"), y = 7.4,
+           label = "Healthy Oxygen Conc. (mg/L)",
+           color = "darkblue") +
+  ggtitle("Disolved Oxygen Over Time") +
+  ylab("Disolved Oxyben (mg/L)") +
+  theme_bw()
+  
+oxygen_time
+```
+
+According to 
