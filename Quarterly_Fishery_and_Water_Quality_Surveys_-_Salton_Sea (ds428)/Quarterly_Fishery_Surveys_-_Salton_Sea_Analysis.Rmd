@@ -67,15 +67,6 @@ This dataset is licensed under Creative Commons Attribution 4.0 International Li
 
 Disclaimer: The State of California provides this data without guarantees of accuracy or completeness. Use at your own discretion.
 
-### Links
-[Salton Sea Unit](https://water.ca.gov/saltonsea/)
-
-[Background Information on the Salton Sea](https://wildlife.ca.gov/Regions/6/Salton-Sea-Program/Background)
-
-[Salton Sea Management Efforts](https://wildlife.ca.gov/Regions/6/Salton-Sea-Program/Management-Efforts)
-
-[This data came from Quarterly Fishery Surveys - Salton Sea [ds428]](https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428)
-
 ### Setting up the working directory, loading in the libraries, and csv file
 
 ```{r}
@@ -294,7 +285,7 @@ y.common <- textGrob("Abundance",
 x.common <- textGrob("Date", 
                    gp=gpar(fontsize=15))
 
-# Arranging the graphs in a grid, removing the y and x axis titles of the orginal graphs, and replacing them with the common y and x axis titles.
+# Arranging the graphs in a grid, removing the y and x axis titles of the original graphs, and replacing them with the common y and x axis titles.
 grid.arrange(arrangeGrob(Tilapia_Over_Time + ylab("") + xlab("") + ggtitle("Tilapia"),
                          Corvina_Over_Time + ylab("") + xlab("") + ggtitle("Corvina"),
                          Croaker_Over_Time + ylab("") + xlab("") + ggtitle("Croaker"),
@@ -328,7 +319,7 @@ unique_sites <- shape_data_coords %>%
   group_by(lon, lat) %>%
   slice(1) %>%  # Keep only the first row for each point, to make the names unique
   ungroup() %>%
-  mutate(SITE = trimws(gsub("\\(bottom\\) 1", "", SITE))) # Removes "(bottom) 1" and trims any leading/trailing white space. The removal of (bottom) 1 was necessary because there were other site names that indicated the depth at which each site was surveyed and for this map those addional names could clutter the map
+  mutate(SITE = trimws(gsub("\\(bottom\\) 1", "", SITE))) # Removes "(bottom) 1" and trims any leading/trailing white space. The removal of (bottom) 1 was necessary because there were other site names that indicated the depth at which each site was surveyed and for this map those additional names could clutter the map
 
 # Plot all points, label only one per unique location
 ggplot() +
@@ -432,6 +423,16 @@ The site that had the most fish observed was the South Salton City. All of the b
 
 ## Conclusion
 
-The Salton Sea, a terminal lake facing ecological decline, is currently the focus of active conservation efforts aimed at restoring its health and biodiversity. This analysis reveals distinct trends among the four sportfish species studied. Tilapia populations have shown substantial growth over time, whereas both croaker and corvina experienced rapid declines shortly after monitoring began. Sargo were not observed during the study period and were therefore excluded from the analysis.
+The Salton Sea, a terminal lake facing ecological decline, is currently the focus of active conservation efforts aimed at restoring its health and biodiversity. This analysis reveals distinct trends among the four sportfish species studied. Tilapia populations have shown substantial growth over time, whereas both croaker and corvina experienced rapid declines shortly after monitoring began. Sargos were not observed during the study period and were therefore excluded from the analysis.
 
 Spatially, fish abundance was highest in near-shore habitats, with the central basin yielding the lowest catch rates across all species — emphasizing the importance of shoreline environments for sustaining fish populations in the Sea.
+
+## References
+
+	1.	California Department of Water Resources. Salton Sea Unit. https://water.ca.gov/saltonsea/ (accessed 29 Mar. 2025).
+	
+	2.	California Department of Fish and Wildlife. Background Information on the Salton Sea. https://wildlife.ca.gov/Regions/6/Salton-Sea-Program/Background (accessed 29 Mar. 2025).
+	
+	3.	California Department of Fish and Wildlife. Salton Sea Management Efforts. https://wildlife.ca.gov/Regions/6/Salton-Sea-Program/Management-Efforts (accessed 29 Mar. 2025).
+	
+	4.	California Natural Resources Agency. Quarterly Fishery Surveys - Salton Sea [ds428]. https://data.cnra.ca.gov/dataset/quarterly-fishery-surveys-salton-sea-ds428 (accessed 29 Mar. 2025).
