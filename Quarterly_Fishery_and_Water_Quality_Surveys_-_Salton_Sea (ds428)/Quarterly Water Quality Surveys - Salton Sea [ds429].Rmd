@@ -2,21 +2,23 @@
 title: "Quarterly Water Quality Surveys - Salton Sea [ds429]"
 author: "Bodhi Hueffmeier"
 date: "2025-04-11"
-output: html_document
+output: 
+  html_document: 
+    theme: cerulean
 ---
 
 # Sampling Methods Overview
 
 Beginning in spring 2003, the California Department of Fish and Game (CDFG) initiated a long-term monitoring program involving quarterly fish sampling at multiple stations across the Salton Sea. Water quality data were collected simultaneously at each sampling location. (Note: This dataset is designed to be used alongside the Quarterly Fishery Surveys - Salton Sea [ds428].)
 
-## The survey initially included 14 stations across three main habitat types:
+### The survey initially included 14 stations across three main habitat types:
 	•	Pelagic (open water): 3 sites located in the central regions of the north basin, south basin, and inter-basin.
 	•	Near-shore: 8 sites distributed along both the east and west shores.
 	•	Estuarine: 3 sites near the mouths of the New, Alamo, and Whitewater Rivers, where river inflow influences habitat conditions.
 
 Due to a lack of fish capture during the first year, the three deep-water pelagic sites were removed from the sampling protocol in later years.
 
-## Sampling was conducted seasonally:
+### Sampling was conducted seasonally:
 	•	Spring – April to May
 	•	Summer – July to August
 	•	Fall – October to November
@@ -27,7 +29,7 @@ Each sampling event aimed to take place over a condensed time frame, depending o
 Salinity was derived from specific conductivity using the following formula:
 Salinity = 0.013(SC²) - 0.233(SC) + 17.102
 
-[Quarterly Water Quality Surveys - Salton Sea [ds429]](https://data.cnra.ca.gov/dataset/quarterly-water-quality-surveys-salton-sea-ds429/resource/9c6e58b5-bd68-444d-ae1e-f0ab8904ad4f)
+[Quarterly Water Quality Surveys - Salton Sea [ds429]](https://data.cnra.ca.gov/dataset/quarterly-water-quality-surveys-salton-sea-ds429)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -45,15 +47,18 @@ klippy::klippy(
 ```
 
 ### Setting up the libraries, working directory, and data
+
 ```{r}
-library(readr)
-library(tidyverse)
-library(dplyr)
-library(ggplot2)
+library(readr) # For reading CSV files
+library(tidyverse) # For data manipulation
+library(dplyr) # For data manipulation
+library(ggplot2) # For data manipulation and visualization
 library("ggbreak") # For creating breaks in the x or y axes
 library("patchwork") # For creating breaks in the x or y axes
+library(knitr) # For creating tables
+library(kableExtra) # For creating tables
 
-setwd("~/Desktop/Universal Folder/Data Analysis Projects/Salton Sea [ds429]/Quarterly_Fishery_Surveys_-_Salton_Sea")
+setwd("~/Desktop/Universal Folder/Data Analysis Projects/Salton Sea [ds429]/Quarterly_Fishery_and_Water_Quality_Surveys_-_Salton_Sea (ds428)")
 
 water_dat <- read_csv("Quarterly_Water_Quality_Surveys_-_Salton_Sea_[ds429].csv")
 
@@ -67,7 +72,7 @@ All of these columns will be have the "N/A" values converted to "NA" values and 
 cols_to_convert <- c("TEMP_C", "CONDUCTIVI", "SP_CONDUCT", "SALINITY", "DISS_OXYGE")
 
 water_dat <- water_dat %>%
-  mutate(across(all_of(cols_to_convert), ~ as.double(na_if(., "N/A"))))  # changing all of the columns listed in the cols_to_convert object as numeric and if any "N/A" value is present it is then converted to NA as a double.
+  mutate(across(all_of(cols_to_convert), ~ as.double(na_if(., "N/A"))))  # changing all of the columns listed in the cols_to_convert object as numeric and if any "N/A" value is present it is then converted to NA as a numbers
                 
 str(water_dat)
 ```
@@ -79,25 +84,16 @@ water_dat <- water_dat %>%
   mutate(Date = as.Date(ymd_hms(water_dat$DATE_)))
 ```
 
+### Sality Over Time
 
-```{r}
-limited.water.data <- water_dat %>%
-  select(-c(DATE_, COMMENTS, UTM_E, UTM_N, SP_CONDUCT, CONDUCTIVI, X, Y, PROBE, OBJECTID, DISS_OXYGE, SITE))
-
-limited.water.data
-
-plot(limited.water.data)
-```
-The average salinity of the ocean is typically around 35 grams of salt per kilogram (g/kg) of seawater according to [USGS, 2022-03-14](https://www.usgs.gov/faqs/why-ocean-salty#:~:text=The%20concentration%20of%20salt%20in,comes%20from%20the%20dissolved%20salts.)
-
-```{r}
+```{r fig.width = 10, fig.height = 5}
 no_na_salinity <- water_dat %>%     # Removing NAs from the water data
   drop_na(SALINITY)
 
 salinity_time <- ggplot(data = no_na_salinity, aes(x = Date, y = SALINITY, color = SITE)) +
   geom_line() +
   geom_hline(yintercept = 35, linetype = "dashed", color = "darkblue") +
-  annotate("text", x = as.Date("2005-07-01"), y = 35.5, 
+  annotate("text", x = as.Date("2005-04-01"), y = 35.5, 
            label = "Avg Ocean Salinity (35 ppt)", 
            color = "darkblue", hjust = 0, vjust = -0.2) +
   theme_bw() +
@@ -107,8 +103,37 @@ salinity_time <- ggplot(data = no_na_salinity, aes(x = Date, y = SALINITY, color
 
 salinity_time
 ```
+The average salinity of the ocean is typically around 35 grams of salt per kilogram (g/kg) of seawater, according to [USGS, 2022-03-14](https://www.usgs.gov/faqs/why-ocean-salty#:~:text=The%20concentration%20of%20salt%20in,comes%20from%20the%20dissolved%20salts.)
 
 ```{r}
+# Create the data frame
+salinity_table <- data.frame(
+  Species = c("Tilapia", "Sargo", "Orangemouth Corvina", "Gulf Croaker"),
+  `Eggs/Larvae` = c("75-95 (max), 35-65 (optimal)",
+                    "40 (max), 33-37 (optimal)",
+                    "40 (max), 33-37 (optimal)",
+                    "40 (max), 15-40"),
+  Juveniles = c("75-95 (max), 35-65 (optimal)",
+                "45 (max)",
+                "45 (max)",
+                "45 (max)"),
+  Adults = c("75-95 (max), 35-65 (optimal)",
+             "45-55 (max), No Spawning",
+             "50-55 (max)",
+             "55-57 (max)")
+)
+
+# Create a kable table
+kable(salinity_table, format = "html", escape = FALSE, caption = "Salinity Tolerance (‰) of Selected Fish Species in Different Life Stages") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+[SALTON SEA ECOSYSTEM RESTORATION PLAN, 2005](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905) provides information on the salinity tolerances of various fish species in the Salton Sea. The table above summarizes the salinity tolerances for different life stages of selected fish species, including Tilapia, Sargo, Orangemouth Corvina, and Gulf Croaker.
+
+Over time, the salinity of the Salton Sea has been increasing and is significantly higher than the average ocean salinity. The Salton Sea's salinity levels have been reported to be around 50 grams of salt per kilogram (g/kg) or even higher, which can have detrimental effects on the aquatic life in the area.
+
+### Temperature Over Time
+
+```{r fig.width = 10, fig.height = 5}
 temp_time <- ggplot(data = water_dat, aes(x = Date, y = TEMP_C, color = SITE)) +
   geom_line() +
   ggtitle("Temperature Over Time") +
@@ -119,19 +144,70 @@ temp_time <- ggplot(data = water_dat, aes(x = Date, y = TEMP_C, color = SITE)) +
 temp_time
 ```
 
+Temperature is measured in degrees Celsius (°C) and the average temperature of the ocean is around 17 °C according to [NOAA, 2022-03-14](https://oceanservice.noaa.gov/facts/temperature.html).
+
 ```{r}
+# Create the data frame
+fish_temp <- data.frame(
+  Species = c("Tilapia", "Orangemouth Corvina", "Gulf Croaker", "Sargo"),
+  `Optimal Temperature Range` = c("75–86°F (24–30°C)", "Not specified", "Not specified", "Not specified"),
+  `Stress Thresholds` = c("Below 68°F (20°C): Stress", "Not specified", "Not specified", "Not specified"),
+  `Lethal Limits` = c("Below 50°F (10°C): Lethal", "Not specified", "Not specified", "Not specified"),
+  Source = c(
+    "[Grower Today](https://growertoday.com/tilapia-temperature-requirements/)",
+    "[CDFW](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905)",
+    "[CDFW](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905)",
+    "[CDFW](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905)"
+  )
+)
+
+# Create a kable table
+kable(fish_temp, format = "html", escape = FALSE, caption = "Temperature Tolerances for Selected Salton Sea Fish Species") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+The table above summarizes the temperature tolerances for different fish species in the Salton Sea. The optimal temperature range for Tilapia is between 75–86°F (24–30°C), while the stress threshold is below 68°F (20°C) and lethal limits are below 50°F (10°C). The other species do not have specified temperature tolerances.
+
+The temperature of the Salton Sea can vary significantly, with summer temperatures often exceeding 30 °C (86 °F) and winter temperatures dropping to around 10 °C (50 °F). The data shows that the temperature in the Salton Sea is generally higher than the average ocean temperature, which can have implications for the aquatic ecosystem. 
+
+### Dissolved Oxygen Over Time
+
+```{r fig.width = 10, fig.height = 5}
 oxygen_time <- ggplot(data = water_dat, aes(x = Date, y = DISS_OXYGE, color = SITE)) +
   geom_line() +
-  geom_hline(yintercept = 5, linetype = "dashed", color = "darkblue") +
-  geom_hline(yintercept = 8, linetype = "dashed", color = "darkblue") +
-  annotate("text", x = as.Date("2006-01-01"), y = 7.4,
-           label = "Healthy Oxygen Conc. (mg/L)",
-           color = "darkblue") +
-  ggtitle("Disolved Oxygen Over Time") +
-  ylab("Disolved Oxyben (mg/L)") +
-  theme_bw()
+ scale_y_continuous(name = "Dissolved Oxyben (mg/L)",
+                    sec.axis = sec_axis(trans = ~., # identical scale
+                                        
+        breaks = c(3, 5, 7, 10),
+        labels = c("Deadly", "Stressful", "Spawing/Growth", "Preferred"),
+        name = "O2 Quality"
+        )
+      ) +
+  ggtitle("Dissolved Oxygen Over Time") +
+  theme_bw() +
+  labs(color = "Sampling Sites") +
+  theme(axis.text.y = element_text(angle = 45, hjust = 1)
+        )
   
 oxygen_time
 ```
 
-According to 
+According to [Atlas Scientific, 2025-01-02](https://atlas-scientific.com/blog/dissolved-oxygen-in-water-ppm-for-fish/?srsltid=AfmBOooerjJwGn1hehDjYjzdmpVOnHQApUAu18rdyTxo5z3fOYdrsmak), the average dissolved oxygen concentration in seawater is around 5 to 8 mg/L. 
+
+The data shows that the dissolved oxygen levels in the Salton Sea can drop below 5 mg/L at times, which can be detrimental to the aquatic life in the area.
+
+## Conclusion
+
+The data from the Quarterly Water Quality Surveys at the Salton Sea provides valuable insights into the environmental conditions of the area. The analysis of salinity, temperature, and dissolved oxygen levels over time can help in understanding the health of the aquatic ecosystem and inform management decisions. The observed trends indicate fluctuations in these parameters, which may be influenced by seasonal changes and other environmental factors. Salinity levels are well above the average ocean salinity and the dissolved oxygen levels do reach below 5 mg/L at times, which can be concerning for the aquatic life in the Salton Sea. Continuous monitoring and further research are essential to assess the long-term impacts of these conditions on the ecosystem.
+
+
+## References
+
+	1.	California Natural Resources Agency. Quarterly Water Quality Surveys - Salton Sea [ds429]. https://data.cnra.ca.gov/dataset/quarterly-water-quality-surveys-salton-sea-ds429 (accessed 11 Apr. 2025).
+	
+	2.	U.S. Geological Survey. Why is the ocean salty?. https://www.usgs.gov/faqs/why-ocean-salty (2019).
+	
+	3.	Atlas Scientific. Dissolved Oxygen In Water: PPM For Fish. https://atlas-scientific.com/blog/dissolved-oxygen-in-water-ppm-for-fish/ (2022).
+	4.	Grower Today. Tilapia Temperature Requirements. https://growertoday.com/tilapia-temperature-requirements/ (2022).
+	
+	5.	California Department of Fish and Game. Salton Sea Ecosystem Restoration Plan: Evaluation of Salinity Tolerance and Availability of Selected Fish Species Potentially Suitable for Introduction to the Salton Sea Ecosystem. https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905 (2005).
+
