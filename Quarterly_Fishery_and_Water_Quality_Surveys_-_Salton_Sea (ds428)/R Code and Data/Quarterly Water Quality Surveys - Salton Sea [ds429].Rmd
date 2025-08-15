@@ -150,14 +150,14 @@ Temperature is measured in degrees Celsius (°C) and the average temperature of 
 # Create the data frame
 fish_temp <- data.frame(
   Species = c("Tilapia", "Orangemouth Corvina", "Gulf Croaker", "Sargo"),
-  `Optimal Temperature Range` = c("75–86°F (24–30°C)", "Not specified", "Not specified", "Not specified"),
+  `Optimal Temperature Range` = c("75–86°F (24–30°C)", "69.1-82.2°F (20.6-27.9°C)", "Not specified", "59 - 75.4°F (15 - 24.1°C)"),
   `Stress Thresholds` = c("Below 68°F (20°C): Stress", "Not specified", "Not specified", "Not specified"),
   `Lethal Limits` = c("Below 50°F (10°C): Lethal", "Not specified", "Not specified", "Not specified"),
   Source = c(
     "[Grower Today](https://growertoday.com/tilapia-temperature-requirements/)",
-    "[CDFW](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905)",
-    "[CDFW](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905)",
-    "[CDFW](https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=8905)"
+    "[Fish Base](https://www.fishbase.se/summary/SpeciesSummary.php?ID=13996&AT=Gulf+Croaker)",
+    "[Fish Base](https://www.fishbase.se/summary/SpeciesSummary.php?ID=3582&AT=orangemouth+Corvina)",
+    "[Fish Base](https://www.fishbase.se/summary/SpeciesSummary.php?ID=1753&AT=Sargo-leg%C3%ADtimo-do-Mediterr%C3%A2neo)"
   )
 )
 
